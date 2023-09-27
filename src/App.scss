@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import './varaibles';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    background-color: $backgroundColor;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+}
+
+.primary-button {
+    padding: 18px 24px;
+    border: none;
+    background-color: $primaryColor;
+    color: $tertiaryColor;
+    font-size: 16px;
+
+    &:hover {
+        background-color: #707072;
+    }
+}
+
+.secondary-button {
+    padding: 18px 24px;
+    border: 2px solid #D8D8D9;
+    background-color: $tertiaryColor;
+    color: $primaryColor;
+    font-size: 16px;
+
+    &:hover {
+        border-color: #000;
+    }
+}

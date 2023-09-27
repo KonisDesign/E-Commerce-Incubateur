@@ -1,0 +1,68 @@
+@import '../../varaibles';
+
+.shoe-card {
+    width: 20%;
+    min-width: 300px;
+    max-width: 400px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    &:hover .shoe-image {
+        transform: scale(1.3);
+    }
+
+    &:hover .infos-card {
+        opacity: 1;
+    }
+
+    .shoe-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: all .5s ease-in-out;
+    }
+
+    .infos-card {
+        width: 100%;
+        height: auto;
+        padding: 50px 10px 10px;
+        display: flex;
+        opacity: 0;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 10px;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+        transition: all .5s ease-in-out;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        .action-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 15px;
+            
+            .action-button {
+                padding: none;
+                border: none;
+                background-color: transparent;
+                font-size: 30px;
+            }
+        }
+
+        .infos-container {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

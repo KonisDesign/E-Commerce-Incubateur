@@ -1,0 +1,33 @@
+@import '../../varaibles';
+
+header {
+    width: 100%;
+    height: auto;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        cursor: pointer;
+
+        .title {
+            font-size: 40px;
+        }
+    }
+
+    .nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+
+        .nav-button {
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: $primaryColor;
+            font-size: 25px;
+        }
+    }
+}
