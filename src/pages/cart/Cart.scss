@@ -1,3 +1,5 @@
+@import '../../varaibles';
+
 .cart-page {
     width: 100%;
     height: auto;
@@ -6,4 +8,43 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    h1 {
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .align-right {
+        width: 90%;
+        max-width: 800px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+        .total-container {
+            width: 200px;
+            height: auto;
+            padding: 10px;
+            border: 2px solid $primaryColor;
+
+            .total {
+                width: 100%;
+                text-align: right;
+                font-size: 35px;
+                text-transform: capitalize;
+            }
+
+            p {
+                width: 100%;
+                text-align: right;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
 }

@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [products, setProducts] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,15 +26,31 @@ export default function Cart() {
     fetchProducts();
   }, [cart]);
 
+  useEffect(() => {
+    let total = 0;
+    products.forEach((product, index) => {
+      total += product.price * cart[index].quantity;
+    });
+    setTotalPrice(total);
+  }, [products, cart]);
+
   return (
     <div className='cart-page'>
+      <h1>Cart</h1>
       {cart.length > 0 ? (
         products.map((product, index) => (
-          <CartItem key={index} name={product.name} nameJoint={product.name_joint} quantity={cart[index].quantity} price={product.price}/>
+          <CartItem key={index} id={index} name={product.name} nameJoint={product.name_joint} quantity={cart[index].quantity} price={product.price} />
         ))
       ) : (
         <h1>Nothing here !</h1>
       )}
+      <div className="align-right">
+        <div className="total-container">
+          <h2 className='total'>Total</h2>
+          <p>{totalPrice}€</p>
+          <button className='primary-button'>Checkout</button>
+        </div>
+      </div>
     </div>
   );
 }

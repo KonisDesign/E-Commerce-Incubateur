@@ -15,7 +15,7 @@ export default function Header() {
       </div>
       <div className='nav'>
         <button className='nav-button' onClick={() => navigate('/cart')}><BsBag /></button>
-        <button className='nav-button'><AiOutlineUser /></button>
+        <button className='nav-button' onClick={() => navigate('/login')}><AiOutlineUser /></button>
       </div>
     </header>
   )
