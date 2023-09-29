@@ -1,26 +1,30 @@
-import React from 'react';
-import './SignUp.scss';
+import React from 'react'
+import './SignIn.scss'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const SignupSchema = Yup.object().shape({
-    firstname: Yup.string().required('Required*'),
-    lastname: Yup.string().required('Required*'),
     email: Yup.string().email('Invalid email address').required('Required*'),
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required*'),
 });
 
-export default function SignUp() {
+export default function SignIn() {
 
     const navigate = useNavigate()
 
     const handleSubmit = (values, { setSubmitting }) => {
         axios
-            .post('http://localhost:3000/signup', values)
+            .post('http://localhost:3000/signin', values)
             .then((response) => {
-                navigate('/signin')
+                const token = response.data.token;
+                localStorage.setItem('token', token);
+                if (JSON.parse(localStorage.getItem('cart'))) {
+                    navigate('/cart')
+                } else {
+                    navigate('/')
+                }
             })
             .catch((error) => {
                 console.error('Error signup', error);
@@ -31,39 +35,15 @@ export default function SignUp() {
     };
 
     return (
-        <div className='signup-page'>
-            <h1>Sign Up</h1>
+        <div className='signin-page'>
+            <h1>Sign In</h1>
             <Formik
-                initialValues={{ firstname: '', lastname: '', email: '', password: '', address: '', city: '', country: '', orders: [], }}
+                initialValues={{ firstname: '', lastname: '', email: '', password: '' }}
                 validationSchema={SignupSchema}
                 onSubmit={handleSubmit}
             >
                 {({ isSubmitting, values }) => (
                     <Form className='form-container'>
-                        <div className="columns-2">
-                            <div className='input-container'>
-                                <Field
-                                    type="text"
-                                    name="firstname"
-                                    className={`input ${values.firstname && 'input-filled'}`}
-                                />
-                                <label htmlFor="firstname" className={`input-label ${values.firstname && 'label-up'}`}>
-                                    Firstname
-                                </label>
-                                <ErrorMessage name="firstname" component="div" className="error" />
-                            </div>
-                            <div className='input-container'>
-                                <Field
-                                    type="text"
-                                    name="lastname"
-                                    className={`input ${values.lastname && 'input-filled'}`}
-                                />
-                                <label htmlFor="lastname" className={`input-label ${values.lastname && 'label-up'}`}>
-                                    Lastname
-                                </label>
-                                <ErrorMessage name="lastname" component="div" className="error" />
-                            </div>
-                        </div>
                         <div className='input-container'>
                             <Field
                                 type="email"
@@ -87,12 +67,12 @@ export default function SignUp() {
                             <ErrorMessage name="password" component="div" className="error" />
                         </div>
                         <button type="submit" className='primary-button' disabled={isSubmitting}>
-                            Create account
+                            Connection
                         </button>
                     </Form>
                 )}
             </Formik>
-            <button className='terciary-button' onClick={() => navigate('/signin')}>Log In</button>
+            <button className='terciary-button' onClick={() => navigate('/signup')}>Create an account</button>
         </div>
-    );
+    )
 }

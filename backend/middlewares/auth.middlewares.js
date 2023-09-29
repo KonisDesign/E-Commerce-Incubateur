@@ -1,3 +1,8 @@
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const secretKey = process.env.SECRET_KEY;
+
 const authenticateJWT = (req, res, next) => {
     const token = req.header('x-auth-token');
 
@@ -5,7 +10,7 @@ const authenticateJWT = (req, res, next) => {
         return res.status(401).json({ message: 'Authentication failed' });
     }
 
-    jwt.verify(token, 'your-secret-key', (err, user) => {
+    jwt.verify(token, secretKey, (err, user) => {
         if (err) {
             return res.status(401).json({ message: 'Authentication failed' });
         }
@@ -13,3 +18,5 @@ const authenticateJWT = (req, res, next) => {
         next();
     });
 };
+
+module.exports = authenticateJWT;

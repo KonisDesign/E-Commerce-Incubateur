@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './Cart.scss';
 import CartItem from '../../components/cart-item/CartItem';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const isConnected = localStorage.getItem('token') || null;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,7 +43,7 @@ export default function Cart() {
       <h1>Cart</h1>
       {cart.length > 0 ? (
         products.map((product, index) => (
-          <CartItem key={index} id={index} name={product.name} nameJoint={product.name_joint} quantity={cart[index].quantity} price={product.price} />
+          <CartItem key={index} id={index} name={product.name} nameJoint={product.name_joint} quantity={cart[index].quantity} price={product.price} deleteBtn={1} />
         ))
       ) : (
         <h1>Nothing here !</h1>
@@ -48,7 +52,7 @@ export default function Cart() {
         <div className="total-container">
           <h2 className='total'>Total</h2>
           <p>{totalPrice}€</p>
-          <button className='primary-button'>Checkout</button>
+          <button className='primary-button' onClick={isConnected ? () => navigate('/checkout') : () => navigate('/signin')}>Checkout</button>
         </div>
       </div>
     </div>

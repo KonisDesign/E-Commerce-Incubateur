@@ -12,7 +12,6 @@ export default function Shoe() {
 
   useEffect(() => {
     const shoeId = id;
-    console.log(shoeId);
     axios
       .get(`http://localhost:3000/${shoeId}`)
       .then((response) => {

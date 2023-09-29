@@ -1,0 +1,87 @@
+.checkout-page {
+    width: 100%;
+    height: auto;
+    padding: 40px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    h1 {
+        width: 100%;
+        margin-bottom: 40px;
+        font-size: 50px;
+        text-align: center;
+    } 
+
+    .form-container {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+
+        .input-container {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            position: relative;
+
+            label {
+                color: rgba($color: #000000, $alpha: .7);
+                position: absolute;
+                transition: all 0.3s ease-in-out;
+                transform-origin: left bottom;
+                transform: translateY(0%);
+                pointer-events: none;
+            }
+
+            .input {
+                width: 100%;
+                padding-bottom: 5px;
+                border: none;
+                border-bottom: 1px solid rgba($color: #000000, $alpha: .3);
+                background-color: transparent;
+                font-size: 17px;
+
+                &.input-filled + label, &:focus + label {
+                    transform: translateY(-100%) scale(0.8);
+                }
+            }
+
+            .error {
+                color: red;
+                font-size: 10px;
+            }
+        }
+
+        .columns-2 {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .input-container {
+                width: calc(50% - 10px);
+            }
+        }
+
+        .primary-button {
+            width: 100%;
+            height: 56px;
+            border-radius: 28px;
+        }
+    }
+
+    .secondary-button {
+        width: 300px;
+        height: 56px;
+        border-radius: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}

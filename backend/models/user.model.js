@@ -5,6 +5,10 @@ const UserSchema = new mongoose.Schema({
     lastname: String,
     email: String,
     password: String,
+    address: String,
+    city: String,
+    country: String,
+    orders: Array,
 });
 
 module.exports = mongoose.model('Users', UserSchema);
