@@ -1,6 +1,7 @@
 .profile-page {
     width: 100%;
     height: auto;
+    min-height: 80vh;
     padding: 40px 7%;
     display: flex;
     flex-direction: column;
@@ -37,6 +38,21 @@
 
             h2 {
                 margin-bottom: 20px;
+            }
+
+            .no-purchases-container {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+
+                button {
+                    height: 56px;
+                    border-radius: 28px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 30px;
+                }
             }
         }
     }

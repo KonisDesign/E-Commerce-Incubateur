@@ -3,6 +3,7 @@
 .cart-page {
     width: 100%;
     height: auto;
+    min-height: 80vh;
     padding: 40px 5%;
     display: flex;
     flex-direction: column;
@@ -46,5 +47,14 @@
                 margin-top: 20px;
             }
         }
+    }
+
+    .secondary-button {
+        height: 56px;
+        border-radius: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
     }
 }

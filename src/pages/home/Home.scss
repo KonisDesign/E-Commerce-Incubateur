@@ -1,10 +1,39 @@
 .home-page {
     width: 100%;
     height: auto;
-    padding: 40px 5%;
+    min-height: 80vh;
+    padding: 40px 7%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 20px;
+
+    .filter-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: 10px;
+
+        .input-filter {
+            width: 100px;
+            padding-bottom: 5px;
+            border: none;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: .3);
+            background-color: transparent;
+            font-size: 17px;
+            cursor: pointer;
+        }
+    }
+
+    .shoes-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 }

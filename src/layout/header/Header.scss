@@ -21,6 +21,22 @@ header {
         justify-content: flex-end;
         align-items: center;
         gap: 10px;
+        position: relative;
+
+        span {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            font-size: 12px;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+        }
 
         .nav-button {
             padding: 0;

@@ -8,7 +8,7 @@ const secretKey = process.env.SECRET_KEY;
 
 exports.createUser = async (req, res) => {
     try {
-        const { firstname, lastname, email, password, address, city, country, orders, } = req.body;
+        const { firstname, lastname, email, password, address, zip, city, country, orders, } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -23,6 +23,7 @@ exports.createUser = async (req, res) => {
             email,
             password: hashedPassword,
             address,
+            zip,
             city,
             country,
             orders,
@@ -75,7 +76,7 @@ exports.getUserById = async (req, res) => {
 
 exports.createOrder = async (req, res) => {
     try {
-        const { address, city, country, orders } = req.body;
+        const { address, zip, city, country, orders } = req.body;
 
         const user = await User.findById(req.params.id);
 
@@ -85,6 +86,7 @@ exports.createOrder = async (req, res) => {
 
         user.orders.unshift(...orders);
         user.address = address;
+        user.zip = zip;
         user.city = city;
         user.country = country;
 

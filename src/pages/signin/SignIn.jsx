@@ -1,5 +1,5 @@
-import React from 'react'
-import './SignIn.scss'
+import React, { useState } from 'react';
+import './SignIn.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -11,8 +11,8 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function SignIn() {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = (values, { setSubmitting }) => {
         axios
@@ -20,14 +20,15 @@ export default function SignIn() {
             .then((response) => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                if (JSON.parse(localStorage.getItem('cart'))) {
-                    navigate('/cart')
+                if (JSON.parse(localStorage.getItem('cart')).length > 0) {
+                    navigate('/cart');
                 } else {
-                    navigate('/')
+                    navigate('/');
                 }
             })
             .catch((error) => {
                 console.error('Error signup', error);
+                setErrorMessage('Incorrect email or password');
             })
             .finally(() => {
                 setSubmitting(false);
@@ -37,6 +38,7 @@ export default function SignIn() {
     return (
         <div className='signin-page'>
             <h1>Sign In</h1>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <Formik
                 initialValues={{ firstname: '', lastname: '', email: '', password: '' }}
                 validationSchema={SignupSchema}
@@ -74,5 +76,5 @@ export default function SignIn() {
             </Formik>
             <button className='terciary-button' onClick={() => navigate('/signup')}>Create an account</button>
         </div>
-    )
+    );
 }

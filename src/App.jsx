@@ -8,22 +8,27 @@ import SignUp from "./pages/signup/SignUp"
 import SignIn from "./pages/signin/SignIn"
 import Profile from "./pages/profile/Profile"
 import Checkout from "./pages/checkout/Checkout"
+import Confirm from "./pages/confirm/Confirm"
+import { CartProvider } from './context/CartContext';
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Layout >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<Shoe />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </Layout>
+      <CartProvider>
+        <Layout >
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:id" element={<Shoe />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/confirm" element={<Confirm />} />
+          </Routes>
+        </Layout>
+      </CartProvider>
     </BrowserRouter>
   )
 }

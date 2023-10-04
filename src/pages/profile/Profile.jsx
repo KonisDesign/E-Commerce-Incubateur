@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Profile.scss';
 import CartItem from '../../components/cart-item/CartItem';
+import { BsArrowLeft } from 'react-icons/bs';
 
 export default function Profile() {
     const [user, setUser] = useState(null);
@@ -48,16 +49,25 @@ export default function Profile() {
             <div className="dashboard">
                 <div className="card-container">
                     <h2>Latest purchases</h2>
-                    {products.map((item, index) => (
-                        <CartItem key={index} id={item.id} name={item.name} nameJoint={item.name_joint} quantity={user.orders[index].quantity} price={item.price} deleteBtn={0} />
-                    ))}
+                    {products.length > 0 ?
+                        products.map((item, index) => (
+                            <CartItem key={index} id={item.id} name={item.name} nameJoint={item.name_joint} quantity={user.orders[index].quantity} size={user.orders[index].size} price={item.price} deleteBtn={0} />
+                        ))
+                        :
+                        <div className="no-purchases-container">
+                            <p>No purchases</p>
+                            <button className='secondary-button' onClick={() => navigate('/')}><BsArrowLeft />Back to shop</button>
+                        </div>
+                    }
                 </div>
-                <div className="card-container">
-                    <h2>Address</h2>
-                    <p>{user.firstname} {user.lastname}</p>
-                    <p>{user.address}</p>
-                    <p>{user.city}, {user.country}</p>
-                </div>
+                {user.address ?
+                    <div className="card-container">
+                        <h2>Address</h2>
+                        <p>{user.firstname} {user.lastname}</p>
+                        <p>{user.address}</p>
+                        <p>{user.zip} {user.city}, {user.country}</p>
+                    </div>
+                    : null}
             </div>
         </div>
     ) : null;

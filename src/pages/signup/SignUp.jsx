@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignUp.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -16,14 +16,17 @@ export default function SignUp() {
 
     const navigate = useNavigate()
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleSubmit = (values, { setSubmitting }) => {
         axios
             .post('http://localhost:3000/signup', values)
-            .then((response) => {
-                navigate('/signin')
+            .then(() => {
+                navigate('/confirm')
             })
             .catch((error) => {
                 console.error('Error signup', error);
+                setErrorMessage('Email already used');
             })
             .finally(() => {
                 setSubmitting(false);
@@ -33,8 +36,9 @@ export default function SignUp() {
     return (
         <div className='signup-page'>
             <h1>Sign Up</h1>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <Formik
-                initialValues={{ firstname: '', lastname: '', email: '', password: '', address: '', city: '', country: '', orders: [], }}
+                initialValues={{ firstname: '', lastname: '', email: '', password: '', address: '', zip: '', city: '', country: '', orders: [], }}
                 validationSchema={SignupSchema}
                 onSubmit={handleSubmit}
             >

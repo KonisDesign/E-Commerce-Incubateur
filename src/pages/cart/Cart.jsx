@@ -3,6 +3,7 @@ import './Cart.scss';
 import CartItem from '../../components/cart-item/CartItem';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BsArrowLeft } from 'react-icons/bs';
 
 export default function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
@@ -43,18 +44,20 @@ export default function Cart() {
       <h1>Cart</h1>
       {cart.length > 0 ? (
         products.map((product, index) => (
-          <CartItem key={index} id={index} name={product.name} nameJoint={product.name_joint} quantity={cart[index].quantity} price={product.price} deleteBtn={1} />
+          <CartItem key={index} id={index} name={product.name} nameJoint={product.name_joint} size={cart[index].size} quantity={cart[index].quantity} price={product.price} deleteBtn={1} />
         ))
       ) : (
         <h1>Nothing here !</h1>
       )}
-      <div className="align-right">
-        <div className="total-container">
-          <h2 className='total'>Total</h2>
-          <p>{totalPrice}€</p>
-          <button className='primary-button' onClick={isConnected ? () => navigate('/checkout') : () => navigate('/signin')}>Checkout</button>
+      {cart.length > 0 ?
+        <div className="align-right">
+          <div className="total-container">
+            <h2 className='total'>Total</h2>
+            <p>{totalPrice}€</p>
+            <button className='primary-button' onClick={isConnected ? () => navigate('/checkout') : () => navigate('/signin')}>Checkout</button>
+          </div>
         </div>
-      </div>
+        : <button className='secondary-button' onClick={() => navigate('/')}><BsArrowLeft />Back to shop</button>}
     </div>
   );
 }
