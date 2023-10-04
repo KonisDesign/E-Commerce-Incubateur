@@ -7,15 +7,33 @@ footer {
     align-items: center;
     gap: 30px;
 
+    @media screen and (max-width: 430px) {
+        padding-bottom: 30px;
+    }
+
+    h1 {
+        @media screen and (max-width: 414px) {
+            font-size: 30px;
+        }
+    }
+
     .pay-methods {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10px;
 
+        @media screen and (max-width: 414px) {
+            display: none;
+        }
+
         img {
             width: auto;
             height: 20px;
+
+            @media screen and (max-width: 430px) {
+                height: 10px;
+            }
         }
     }
 }

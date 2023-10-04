@@ -20,7 +20,8 @@ export default function SignIn() {
             .then((response) => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                if (JSON.parse(localStorage.getItem('cart')).length > 0) {
+                const cart = JSON.parse(localStorage.getItem('cart'));
+                if (cart && cart.length > 0) {
                     navigate('/cart');
                 } else {
                     navigate('/');

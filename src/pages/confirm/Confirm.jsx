@@ -17,7 +17,7 @@ export default function Confirm() {
 
     return orderNumber ? (
         <div className='confirm-page'>
-            <h1>Thanks For your order !</h1>
+            <h1>Thanks for your order !</h1>
             <p>Order number : <b>{orderNumber}</b></p>
             <div className="success-checkmark">
                 <div className="check-icon">

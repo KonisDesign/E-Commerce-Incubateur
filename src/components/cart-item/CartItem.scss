@@ -10,16 +10,33 @@
     align-items: center;
     gap: 10px;
 
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 320px) {
+        font-size: 14px;
+        min-width: none;
+    }
+
     .item-image {
         width: 5%;
         min-width: 50px;
         aspect-ratio: 1/1;
         object-fit: cover;
+
+        @media screen and (max-width: 320px) {
+            min-width: 40px;
+        }
     }
 
     .name {
         width: 50%;
         min-width: 100px;
+
+        @media screen and (max-width: 320px) {
+            min-width: 80px;
+        }
     }
 
     .quantity-input {
@@ -27,12 +44,28 @@
         min-width: 60px;
         border: none;
         text-align: center;
+
+        @media screen and (max-width: 375px) {
+            min-width: 50px;
+        }
+
+        @media screen and (max-width: 320px) {
+            width: 5%;
+        }
     }
 
     .price {
         width: 35%;
         min-width: 90px;
         text-align: right;
+
+        @media screen and (max-width: 375px) {
+            min-width: 70px;
+        }
+
+        @media screen and (max-width: 320px) {
+            min-width: 40px;
+        }
     }
 
     .delete-button {
