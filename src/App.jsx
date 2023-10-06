@@ -10,16 +10,19 @@ import Profile from "./pages/profile/Profile"
 import Checkout from "./pages/checkout/Checkout"
 import Confirm from "./pages/confirm/Confirm"
 import { CartProvider } from './context/CartContext';
+import ChatBot from "./components/chat-bot/ChatBot"
 
 function App() {
 
   return (
     <BrowserRouter>
+    <ChatBot />
       <CartProvider>
         <Layout >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:id" element={<Shoe />} />
+            <Route path="/:cat" element={<Home />} />
+            <Route path="/product/:id" element={<Shoe />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />

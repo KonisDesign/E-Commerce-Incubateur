@@ -11,12 +11,12 @@ export default function ShoeCard(props) {
   const navigate = useNavigate()
 
   return (
-    <div className='shoe-card' onClick={() => navigate(`/${id}`)}>
+    <div className='shoe-card' onClick={() => navigate(`/product/${id}`)}>
       <img className='shoe-image' src={`/shoes/${nameJoint}.webp`} alt={nameJoint} />
       <div className='infos-card'>
         <div className="action-container">
-          <button className='action-button' onClick={() => navigate(`/${id}`)}><HiMiniMagnifyingGlass /></button>
-          <button className='action-button' onClick={() => navigate(`/${id}`)}><BsBagPlus /></button>
+          <button className='action-button' onClick={() => navigate(`/product/${id}`)}><HiMiniMagnifyingGlass /></button>
+          <button className='action-button' onClick={() => navigate(`/product/${id}`)}><BsBagPlus /></button>
         </div>
         <div className="infos-container">
           <p className='name'>{name}</p>

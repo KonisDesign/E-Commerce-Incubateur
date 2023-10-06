@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import ShoeCard from '../../components/shoe-card/ShoeCard';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function Home() {
   const [shoes, setShoes] = useState([]);
   const [filter, setFilter] = useState(null);
+
+  const param = useParams();
 
   useEffect(() => {
     axios.get('http://localhost:3000/')
@@ -15,7 +18,11 @@ export default function Home() {
       .catch((error) => {
         console.error('Unable to fetch products:', error);
       });
-  }, []); 
+
+      if (param) {
+        setFilter(param.cat)
+      }
+  }, [param]); 
 
   const filteredShoes = filter ? shoes.filter(item => item.cat === filter) : shoes;
 
