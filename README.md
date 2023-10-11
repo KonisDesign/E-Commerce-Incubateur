@@ -1,30 +1,40 @@
-# Projet React et Node
 
-Ce projet utilise React pour le frontend et Node.js pour le backend. Il s'agit d'une application e-commerce.
+# Projcet E-commerce incubateur
+
+This project uses React for the frontend and Node.js for the backend, creating an e-commerce application.
+
 
 ## Installation
 
-### Installer les dépendances du frontend (React) et du backend (Node.js)
-npm install
+#### Install dependencies for the Frontend (React) and Backend (Node.js)
 
-### Démarrer le frontend (à la racine)
-npm run dev
+```bash
+  npm install
+```
 
-### Démarrer le backend (dans le dossier backend)
-node server.js
+#### Start the Frontend (at the root)
 
-### Lancement de l'application
-Ouvrez votre navigateur et accédez à http://localhost:5173/ pour voir l'application.
+```bash
+  npm run dev
+```
+
+#### Start the Backend (in the backend directory)
+
+```bash
+  node server.js
+```
+
+#### Launching the Application
+Open your browser and go to http://localhost:5173/ to see the application.
+## Project Structure
+
+- `/`: Contains the frontend code in React.
+- `backend`: Contains the backend code in Node.js.
 
 
-## Structure du Projet
+## Dependencies
 
-- `/`: Contient le code du frontend en React.
-- `backend`: Contient le code du backend en Node.js.
-
-## Dépendances
-
-### Frontend (React)
+#### Frontend (React)
 
 - React
 - React Router
@@ -34,7 +44,7 @@ Ouvrez votre navigateur et accédez à http://localhost:5173/ pour voir l'applic
 - Yup
 - SASS
 
-### Backend (Node.js)
+#### Backend (Node.js)
 
 - Express
 - Mongoose
@@ -42,18 +52,36 @@ Ouvrez votre navigateur et accédez à http://localhost:5173/ pour voir l'applic
 - Dotenv
 - Bcrypt
 - Jsonwebtoken
+## Available Scripts
 
-## Scripts disponibles
+Go to the project directory
 
-Dans le dossier `frontend`, vous pouvez utiliser les scripts suivants :
+Install dependencies
 
-- `npm run dev`: Lance l'application en mode développement.
-- `npm run build`: Crée une version de production de l'application.
+```bash
+  npm install
+```
 
-Dans le dossier `backend`, vous pouvez utiliser le script suivant :
+Start the front
 
-- `node server.js`: Démarre le serveur Node.js.
+```bash
+  npm run dev
+```
 
-## Auteur
+Build the front
 
-Devos Julien
+```bash
+  npm run buil
+```
+
+Start the server
+
+```bash
+  node server.js
+```
+
+
+## Authors
+
+- [@KonisDesign](https://www.github.com/KonisDesign)
+
