@@ -4,16 +4,16 @@ Ce projet utilise React pour le frontend et Node.js pour le backend. Il s'agit d
 
 ## Installation
 
-# Installer les dépendances du frontend (React) et du backend (Node.js)
+### Installer les dépendances du frontend (React) et du backend (Node.js)
 npm install
 
-# Démarrer le frontend (à la racine)
+### Démarrer le frontend (à la racine)
 npm run dev
 
-# Démarrer le backend (dans le dossier backend)
+### Démarrer le backend (dans le dossier backend)
 node server.js
 
-# Lancement de l'application
+### Lancement de l'application
 Ouvrez votre navigateur et accédez à http://localhost:5173/ pour voir l'application.
 
 
