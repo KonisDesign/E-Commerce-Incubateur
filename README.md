@@ -4,7 +4,7 @@ Ce projet utilise React pour le frontend et Node.js pour le backend. Il s'agit d
 
 ## Installation
 
-# Installer les dépendances du frontend (React) et du backend (Node.js)
+### Installer les dépendances du frontend (React) et du backend (Node.js)
 npm install
 
 # Démarrer le frontend (à la racine)
