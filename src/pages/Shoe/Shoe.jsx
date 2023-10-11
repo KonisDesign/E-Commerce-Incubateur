@@ -38,22 +38,24 @@ export default function Shoe() {
   };
 
   const addToCart = () => {
-    const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (quantity) {
+      const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const existingCartItemIndex = currentCart.findIndex((item) => item.id === id && item.size === size);
+      const existingCartItemIndex = currentCart.findIndex((item) => item.id === id && item.size === size);
 
-    if (existingCartItemIndex !== -1) {
-      currentCart[existingCartItemIndex].quantity += quantity;
-    } else {
-      const cartItem = {
-        id: id,
-        size: size,
-        quantity: quantity,
-      };
-      currentCart.push(cartItem);
+      if (existingCartItemIndex !== -1) {
+        currentCart[existingCartItemIndex].quantity += quantity;
+      } else {
+        const cartItem = {
+          id: id,
+          size: size,
+          quantity: quantity,
+        };
+        currentCart.push(cartItem);
+      }
+      localStorage.setItem('cart', JSON.stringify(currentCart));
+      updateCart(currentCart);
     }
-    localStorage.setItem('cart', JSON.stringify(currentCart));
-    updateCart(currentCart);
   };
 
   return shoe ? (
@@ -84,5 +86,10 @@ export default function Shoe() {
         </button>
       </div>
     </div>
-  ) : null;
+  ) :
+    (
+      <div className='shoe-page'>
+        <h1>This product doesn't exist</h1>
+      </div>
+    );
 }

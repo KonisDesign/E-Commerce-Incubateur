@@ -51,7 +51,7 @@ export default function Profile() {
                     <h2>Latest purchases</h2>
                     {products.length > 0 ?
                         products.map((item, index) => (
-                            <CartItem key={index} id={item.id} name={item.name} nameJoint={item.name_joint} quantity={user.orders[index].quantity} size={user.orders[index].size} price={item.price} deleteBtn={0} />
+                            <CartItem key={index} id={item.id} shoeId={item._id} name={item.name} nameJoint={item.name_joint} quantity={user.orders[index].quantity} size={user.orders[index].size} price={item.price} deleteBtn={0} />
                         ))
                         :
                         <div className="no-purchases-container">

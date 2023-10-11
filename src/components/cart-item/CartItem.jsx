@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './CartItem.scss'
 import { HiXMark } from 'react-icons/hi2'
+import { useNavigate } from 'react-router-dom'
 
 export default function CartItem(props) {
 
-  const { id, name, nameJoint, size, quantity, price, deleteBtn } = props
+  const { id, shoeId, name, nameJoint, size, quantity, price, deleteBtn } = props
+
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
     const cart = JSON.parse(localStorage.getItem('cart'))
@@ -26,7 +29,7 @@ export default function CartItem(props) {
   return (
     <div className='cart-item'>
       <img className='item-image' src={`/shoes/${nameJoint}.webp`} alt={nameJoint} />
-      <p className='name'><b>{name}</b> size: {size}</p>
+      <p className='name' onClick={() => navigate(`/product/${shoeId}`)}><b>{name}</b> size: {size}</p>
       {deleteBtn ?
         <input type="number" className='quantity-input' name='quantity' value={quantity} onChange={changeQuantity} min='1' max='99' />
         :

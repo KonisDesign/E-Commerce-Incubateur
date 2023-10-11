@@ -44,7 +44,7 @@ export default function Cart() {
       <h1>Cart</h1>
       {cart.length > 0 ? (
         products.map((product, index) => (
-          <CartItem key={index} id={index} name={product.name} nameJoint={product.name_joint} size={cart[index].size} quantity={cart[index].quantity} price={product.price} deleteBtn={1} />
+          <CartItem key={index} id={index} shoeId={product._id} name={product.name} nameJoint={product.name_joint} size={cart[index].size} quantity={cart[index].quantity} price={product.price} deleteBtn={1} />
         ))
       ) : (
         <h1>Nothing here !</h1>
